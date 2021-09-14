@@ -18,8 +18,11 @@ def convertImageToAscii(fileName, cols, scale, moreLevels, gscale1, gscale2):
     """
     Given Image and dims (rows, cols) returns an m*n list of Images
     """
+    print('loooool', cols)
     cols = int(cols)
+    print(cols)
     scale = float(scale)
+    print(scale, cols)
     # open image and convert to grayscale
     image = Image.open(fileName).convert('L')
     # store dimensions
@@ -38,7 +41,7 @@ def convertImageToAscii(fileName, cols, scale, moreLevels, gscale1, gscale2):
     # check if image size is too small
     if cols > W or rows > H:
         print("Image too small for specified cols!")
-        exit(0)
+        return None
 
     # ascii image is a list of character strings
     aimg = []

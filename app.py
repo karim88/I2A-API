@@ -44,7 +44,6 @@ def convertToAscii():
                 "message": "Please use only 'POST' or 'GET' methods to send data.",
                 "status": "400"
             }
-
         # set output file
         outFile = 'out.txt'
         # set scale default as 0.43 which suits
@@ -53,7 +52,12 @@ def convertToAscii():
         print('generating ASCII art...')
         # convert image to ascii txt
         aimg = convertImageToAscii(imgFile, cols, scale, moreLevels, gscale1, gscale2)
-        print(aimg)
+        if aimg == None:
+            return {
+            "ascii": "",
+            "message": "Image too small for specified cols!",
+            "status": "500"
+        }
         # open file
         with open(outFile, 'w') as f:
             # write to file
